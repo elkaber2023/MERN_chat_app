@@ -27,16 +27,17 @@ export const signup = async (req, res) => {
     const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=[${username}]`;
     const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=[${username}]`;
 
-    const newUser = new User({
+    const newUser = await new User({
       fullName,
       username,
       password: hashedPassword,
       gender,
       profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
+      token: "",
     });
 
     if (newUser) {
-      generateTokenAndCookie(newUser._id, res);
+      newUser.token = generateTokenAndCookie(newUser._id);
       await newUser.save();
 
       res.status(201).json({
@@ -45,8 +46,12 @@ export const signup = async (req, res) => {
         username: newUser.username,
         profilePic: newUser.profilePic,
         gender,
+        token:newUser.token,
       });
+
+      // req.setHeader("Cookie", ["type=ninja", "language=javascript"]);
     } else {
+      console.log("Invalid user data! From => signup");
       return res.status(400).json({ error: "Invalid user data!" });
     }
   } catch (error) {
@@ -62,33 +67,31 @@ export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-    console.log("user",user);
+
     const isPasswordCorrect = await bcrypt.compare(
       password,
-      user.password || ""
-      );
-      
-      console.log("isPasswordCorrect",isPasswordCorrect);
-      console.log(username,password);
-      
-      if (!user) {
-        return res.status(400).json({ error: "Invalid Username !" });
-      } 
-      if (!isPasswordCorrect) {
-        return res.status(400).json({ error: "Invalid Password!" });
-      }
-      
-    generateTokenAndCookie(user._id, res);
+      user?.password || ""
+    );
+
+    if (!user) {
+      return res.status(400).json({ error: "Invalid Username !" });
+    }
+    if (!isPasswordCorrect) {
+      return res.status(400).json({ error: "Invalid Password!" });
+    }
+
+    // generateTokenAndCookie(user._id, res);
 
     res.status(201).json({
       _id: user._id,
       fullName: user.fullName,
       username: user.username,
       profilePic: user.profilePic,
+      token:user.token
     });
   } catch (error) {
-    console.log("Catch Error in login controller", error.message);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.log("Catch Error in login controller", error);
+    res.status(500).json({ error: "Error From auth.controller> Login > Internal Server Error" });
   }
 };
 
@@ -98,7 +101,7 @@ export const login = async (req, res) => {
 export const logout = (req, res) => {
   try {
     res.cookie("jwt", "", { maxAge: 0 });
-    return res.status(200).json({ message: "Logged out Successfully" });
+    res.status(200).json({ message: "Logged out Successfully" });
   } catch (error) {
     console.log("Catch Error in logout controller", error.message);
     res.status(500).json({ error: "Internal Server Error" });
