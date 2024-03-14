@@ -23,6 +23,7 @@ app.use(cors(corsOptions));
 var corsOptions = {
   origin: "https://chat-app-prod-q5n7.onrender.com",
   // allowedHeaders:['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   // SupportsCredentials:true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
