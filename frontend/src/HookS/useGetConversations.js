@@ -26,7 +26,7 @@ const useGetConversations = () => {
         };
 
         const res = await fetch(
-          "http://localhost:8140/api/users",
+          "http://localhost:5000/api/users",
           requestOptions
         )
           // .then((response) => response.text())

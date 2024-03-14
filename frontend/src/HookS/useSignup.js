@@ -27,7 +27,7 @@ const useSignup = () => {
 
     // Connection Api and Send Post Request
     try {
-      const res = await fetch("http://localhost:8140/api/auth/signup", {
+      const res = await fetch("http://localhost:5000/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -9,7 +9,7 @@ export default defineConfig({
   // },
   // proxy:{
   //   "/api":{
-  //     target:"http://localhost:8140"
+  //     target:`http://localhost:8140`
   //   }
   // }
 })

@@ -7,9 +7,7 @@ import notificationSound from "../assets/Sounds/notification.mp3";
 const useListenMessages = () => {
   const { socket } = useSocketContext();
   const { messages, setMessages } = useConversation();
-  // console.log("useListenMessages > messages => ",messages);
-  // console.log("useListenMessages > messages => messages.data",messages.data[0].message);
-  // console.log("useListenMessages > messages => ...messages",messages);
+
 
   useEffect(() => {
     socket?.on("newMessage", (newMessage) => {

@@ -18,7 +18,7 @@ const useSendMessage = () => {
       myHeader.append("Authorization", `Bearer ${authUser?.token}`);
       // console.log("selectedConversation",selectedConversation);
       const res = await fetch(
-        `http://localhost:8140/api/messages/send/${selectedConversation?._id}`,
+        `http://localhost:5000/api/messages/send/${selectedConversation?._id}`,
         {
           method: "POST",
           headers: myHeader,

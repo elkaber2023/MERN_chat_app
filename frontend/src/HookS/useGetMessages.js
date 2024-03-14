@@ -21,7 +21,7 @@ const useGetMessages = () => {
           redirect: "follow",
         };
         const res = await fetch(
-          `http://localhost:8140/api/messages/${selectedConversation?._id}`,
+          `http://localhost:5000/api/messages/${selectedConversation?._id}`,
           requestOptions
         );
 

@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import path from"path";
 
 import authRoutes from "./Routes/auth.routes.js";
 import messageRoutes from "./Routes/message.routes.js";
@@ -12,8 +13,11 @@ import {app,server} from"./Socket/socket.js"
 
 app.use(cookieParser());
 
-dotenv.config();
 const PORT = process.env.PORT || 5000;
+
+const __dirname =path.resolve();
+
+dotenv.config();
 
 app.use(cors(corsOptions));
 var corsOptions = {
@@ -28,19 +32,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
-// app.get("/", async(req, res) => {
-//   // root route http://localhost:8140/
-//   // res.send("<h1>Hello Osama Welcome To Back :)</h1>");
 
-//   const headers = new Headers();
-//   res.setHeader("jwt", "sssssssssssssssssss")
- 
-//   // Cookies that have not been signed
-//   console.log("Cookies: ", req.cookies.jwt);
+app.use(express.static(path.join(__dirname,"/frontend/dist")))
 
-//   // Cookies that have been signed
-//   console.log("Signed Cookies: ", req.signedCookies);
-// });
+app.get("*",(req,res)=>{
+  res.sendFile(path.join(__dirname,"frontend","dist","index.html"))
+})
 
 
 server.listen(PORT, () => {
