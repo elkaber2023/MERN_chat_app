@@ -21,7 +21,7 @@ dotenv.config();
 
 app.use(cors(corsOptions));
 var corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://chat-app-prod-q5n7.onrender.com",
   // allowedHeaders:['Content-Type', 'Authorization'],
   // SupportsCredentials:true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
