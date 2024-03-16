@@ -17,7 +17,7 @@ const useLogin = () => {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
-          AccessControlAllowPrivateNetwork:true,
+          // AccessControlAllowPrivateNetwork:true,
           
         },
         body: JSON.stringify({ username, password }),

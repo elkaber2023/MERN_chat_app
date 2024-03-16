@@ -16,7 +16,7 @@ const useSendMessage = () => {
       const myHeader = new Headers();
       myHeader.append("Content-Type", "application/json");
       myHeader.append("Authorization", `Bearer ${authUser?.token}`);
-      myHeader.append("AccessControlAllowPrivateNetwork",true);
+      // myHeader.append("AccessControlAllowPrivateNetwork",true);
       // console.log("selectedConversation",selectedConversation);
       const res = await fetch(
         `http://localhost:5000/api/messages/send/${selectedConversation?._id}`,

@@ -31,7 +31,7 @@ const useSignup = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          AccessControlAllowPrivateNetwork: true,
+          // AccessControlAllowPrivateNetwork: true,
         },
 
         body: JSON.stringify({

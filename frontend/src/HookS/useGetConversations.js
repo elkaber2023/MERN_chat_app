@@ -15,7 +15,7 @@ const useGetConversations = () => {
         // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVhMjZhNjY3OWE0NDNjMGIwMTU2ODYiLCJpYXQiOjE3MDk4NDQxMzQsImV4cCI6MTcxMTE0MDEzNH0.6653ogQcrML3yzAlZND4vM2koCNiPPKQhMzwxu27TEY
         var myHeaders = new Headers();
         myHeaders.append("Authorization",`Bearer ${authUser.token}`);
-        myHeaders.append("AccessControlAllowPrivateNetwork",true );
+        // myHeaders.append("AccessControlAllowPrivateNetwork",true );
 
         var raw = "";
 

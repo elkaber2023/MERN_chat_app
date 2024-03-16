@@ -14,7 +14,7 @@ const useGetMessages = () => {
       try {
         const myHeaders = new Headers();
         // myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("AccessControlAllowPrivateNetwork",true);
+        // myHeaders.append("AccessControlAllowPrivateNetwork",true);
         myHeaders.append("Authorization", `Bearer ${authUser?.token}`);
         const requestOptions = {
           method: "GET",

@@ -9,7 +9,7 @@ const io = new Server(server, {
   cors: {
     // origin: "http://localhost:5173",
     AccessControlAllowOrigin:"*",
-    AccessControlAllowPrivateNetwork:true,
+    // AccessControlAllowPrivateNetwork:true,
     methods: ["GET", "POST"],
     allowedHeaders: ['Content-Type', 'Authorization'],
   },
