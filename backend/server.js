@@ -26,6 +26,7 @@ const corsOptions = {
   // allowedHeaders:['Content-Type', 'Authorization'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   AccessControlAllowOrigin:"*",
+  AccessControlAllowPrivateNetwork:true,
   // SupportsCredentials:true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
