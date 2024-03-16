@@ -20,16 +20,16 @@ const __dirname =path.resolve();
 dotenv.config();
 
 
-
-app.use(cors(corsOptions));
-var corsOptions = {
-  origin: "https://chat-app-prod-q5n7.onrender.com",
-  // allowedHeaders:['Content-Type', 'Authorization'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  AccessControlAllowOrigin:"*",
-  // SupportsCredentials:true,
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+// Cors
+// app.use(cors(corsOptions));
+// var corsOptions = {
+//   origin: "http://localhost:5173",
+//   // allowedHeaders:['Content-Type', 'Authorization'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   AccessControlAllowOrigin:"*",
+//   // SupportsCredentials:true,
+//   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);

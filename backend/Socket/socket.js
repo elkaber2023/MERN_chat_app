@@ -1,16 +1,16 @@
 import { Server } from "socket.io";
-import http from "http";
+import https from "https";
 import express from "express";
 
 const app = express();
 
-const server = http.createServer(app);
+const server = https.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["https://chat-app-prod-q5n7.onrender.com"],
-    AccessControlAllowOrigin:"*",
+    origin: ["http://localhost:5173"],
+    // AccessControlAllowOrigin:"*",
     methods: ["GET", "POST"],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    // allowedHeaders: ['Content-Type', 'Authorization'],
   },
 });
 
