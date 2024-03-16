@@ -18,6 +18,7 @@ export const SocketContextProvider = ({ children }) => {
       const socket = io("https://chat-app-prod-q5n7.onrender.com", {
         allowedHeaders: ['Content-Type', 'Authorization'],
         AccessControlAllowOrigin:"*",
+        origin: ["http://localhost:5173","https://chat-app-prod-q5n7.onrender.com"],
         query: {
           userId: authUser?._id,
         },
