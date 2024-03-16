@@ -15,7 +15,11 @@ const useLogin = () => {
     try {
       const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          AccessControlAllowPrivateNetwork:true,
+          
+        },
         body: JSON.stringify({ username, password }),
       });
       const data = await res.json();
